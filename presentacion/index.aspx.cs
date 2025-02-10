@@ -27,7 +27,7 @@ namespace presentacion
 
             if (resultado == "OK")
             {
-                Response.Redirect("principal.aspx");
+                Response.Redirect("Habitaciones.aspx");
             }
             else
             {
