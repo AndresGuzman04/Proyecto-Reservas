@@ -19,7 +19,7 @@
         </div>
         <div>
             <h2>Lista de Habitaciones</h2>
-            <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="False">
+            <asp:GridView ID="gvHabitaciones" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="False">
                 <Columns>
                     <asp:BoundField DataField="id_habitaciones" HeaderText="ID"></asp:BoundField>
                     <asp:BoundField DataField="numero" HeaderText="Numero"></asp:BoundField>
