@@ -30,16 +30,17 @@ namespace datos
         }
 
         public bool AgregarHabitacion(int numero, string descripcion, int huespedes, int idUsuario) {
+            
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand("INSERT INTO habitaciones " + 
                     "(numero, descripcion, huespedes, id_usuario) " + 
-                    "Values (@numero, @descripcion, @huespedes, @idUsuario)"))
+                    "Values (@numero, @descripcion, @huespedes, @id_usuario)", con))
                 {
                     cmd.Parameters.AddWithValue("@numero", numero);
                     cmd.Parameters.AddWithValue("@descripcion", descripcion);
                     cmd.Parameters.AddWithValue("@huespedes", huespedes);
-                    cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+                    cmd.Parameters.AddWithValue("@id_usuario", idUsuario);
 
                     int filasAfectadas = cmd.ExecuteNonQuery();
                     return filasAfectadas > 0;
@@ -56,14 +57,14 @@ namespace datos
                     "numero = @numero, " + 
                     "descripcion = @descripcion, " +
                     "huespedes = @huespedes, " +
-                    "id_usuario = @idUsuario" +
-                    "WHERE id_habitaciones = @id_habitacion"))
+                    "id_usuario = @id_Usuario " +
+                    "WHERE id_habitaciones = @id_habitacion", con))
                 {
                     cmd.Parameters.AddWithValue("@id_habitacion", id);
                     cmd.Parameters.AddWithValue("@numero", numero);
                     cmd.Parameters.AddWithValue("@descripcion", descripcion);
                     cmd.Parameters.AddWithValue("@huespedes", huespedes);
-                    cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+                    cmd.Parameters.AddWithValue("@id_Usuario", idUsuario);
 
                     int filasAfectadas = cmd.ExecuteNonQuery();
                     return filasAfectadas > 0;
@@ -74,10 +75,9 @@ namespace datos
         public bool EliminarHabitacion(int id) {
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand("DELETE FROM habitaciones" + 
-                    "WHERE id_habitaciones = @id_habitacion", con)) 
+                using (SqlCommand cmd = new SqlCommand("delete from habitaciones where id_habitaciones = @id_habitaciones", con)) 
                 {
-                    cmd.Parameters.AddWithValue("@id_habitacion", id);
+                    cmd.Parameters.AddWithValue("@id_habitaciones", id);
 
                     int filasAfectadas = cmd.ExecuteNonQuery();
                     return filasAfectadas > 0;
