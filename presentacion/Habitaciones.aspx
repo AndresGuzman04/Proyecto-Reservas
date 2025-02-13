@@ -38,7 +38,6 @@
                         OnRowUpdating="gvHabitaciones_RowUpdating"
                         OnRowCancelingEdit="gvHabitaciones_RowCancelingEdit"
                         OnRowDeleting="gvHabitaciones_RowDeleting"
-                        OnRowDataBound="gvHabitaciones_RowDataBound"
                         GridLines="None">
                     <Columns  >
                             <asp:BoundField DataField="id_habitaciones" HeaderText="ID" ReadOnly="True" />

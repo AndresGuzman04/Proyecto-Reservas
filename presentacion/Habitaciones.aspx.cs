@@ -13,6 +13,11 @@ namespace presentacion
         NegocioHabitaciones negocioHabitaciones = new NegocioHabitaciones();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Usuario"] == null) //si no hay sesion
+            {
+                Response.Redirect("index.aspx"); //lo mandamos al login
+            }
+
             if (!IsPostBack) {
                 CargarHabitaciones();
             }

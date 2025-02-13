@@ -27,6 +27,7 @@ namespace presentacion
 
             if (resultado == "OK")
             {
+                Session["Usuario"] = usuario;
                 Response.Redirect("Habitaciones.aspx");
             }
             else
