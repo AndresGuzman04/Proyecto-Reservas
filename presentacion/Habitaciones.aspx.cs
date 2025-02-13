@@ -86,50 +86,5 @@ namespace presentacion
             }
 
         }
-
-        protected void gvHabitaciones_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                // Botón de Editar
-                LinkButton btnEdit = e.Row.Cells[0].Controls.OfType<LinkButton>().FirstOrDefault(b => b.CommandName == "Edit");
-                if (btnEdit != null)
-                {
-                    btnEdit.CssClass = "btn btn-primary btn-sm"; // Botón azul pequeño
-                    btnEdit.Text = "<i class='bi bi-pencil'></i> Editar"; // Ícono de lápiz
-                }
-
-                // Botón de Eliminar
-                LinkButton btnDelete = e.Row.Cells[0].Controls.OfType<LinkButton>().FirstOrDefault(b => b.CommandName == "Delete");
-                if (btnDelete != null)
-                {
-                    btnDelete.CssClass = "btn btn-danger btn-sm"; // Botón rojo pequeño
-                    btnDelete.Text = "<i class='bi bi-trash'></i> Eliminar"; // Ícono de basura
-                    btnDelete.OnClientClick = "return confirm('¿Estás seguro de que deseas eliminar esta habitación?');"; // Confirmación
-                }
-
-                // Si la fila está en modo de edición
-                if (e.Row.RowState.HasFlag(DataControlRowState.Edit))
-                {
-                    // Botón de Actualizar
-                    LinkButton btnUpdate = e.Row.Cells[0].Controls.OfType<LinkButton>().FirstOrDefault(b => b.CommandName == "Update");
-                    if (btnUpdate != null)
-                    {
-                        btnUpdate.CssClass = "btn btn-success btn-sm"; // Botón verde pequeño
-                        btnUpdate.Text = "<i class='bi bi-check-circle'></i> Actualizar"; // Ícono de check
-                    }
-
-                    // Botón de Cancelar
-                    LinkButton btnCancel = e.Row.Cells[0].Controls.OfType<LinkButton>().FirstOrDefault(b => b.CommandName == "Cancel");
-                    if (btnCancel != null)
-                    {
-                        btnCancel.CssClass = "btn btn-secondary btn-sm"; // Botón gris pequeño
-                        btnCancel.Text = "<i class='bi bi-x-circle'></i> Cancelar"; // Ícono de cancelar
-                    }
-                }
-            }
-        }
-
-
     }
 }
