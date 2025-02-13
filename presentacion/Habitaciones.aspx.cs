@@ -71,20 +71,12 @@ namespace presentacion
         }
 
         protected void gvHabitaciones_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e) {
-            if (e.RowIndex >= 0 && e.RowIndex < gvHabitaciones.DataKeys.Count)
-            {
-                int id = Convert.ToInt32(gvHabitaciones.DataKeys[e.RowIndex].Value);
+            int id = Convert.ToInt32(gvHabitaciones.DataKeys[e.RowIndex].Value);
 
-                if (negocioHabitaciones.EliminarHabitacion(id))
-                {
-                    CargarHabitaciones();
-                }
-            }
-            else
+            if (negocioHabitaciones.EliminarHabitacion(id))
             {
-                Response.Write("<script>alert('Error: Row index:"+ e.RowIndex + gvHabitaciones.DataKeys.Count + "');</script>");
+                CargarHabitaciones();
             }
-
         }
     }
 }
