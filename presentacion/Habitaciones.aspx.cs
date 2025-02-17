@@ -11,6 +11,7 @@ namespace presentacion
     public partial class Habitaciones : System.Web.UI.Page
     {
         NegocioHabitaciones negocioHabitaciones = new NegocioHabitaciones();
+        NegocioUsuario negocioUsuario = new NegocioUsuario();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Usuario"] == null) //si no hay sesion
@@ -20,8 +21,16 @@ namespace presentacion
 
             if (!IsPostBack) {
                 CargarHabitaciones();
+                CargarUsuarios();
             }
 
+        }
+
+        protected void CargarUsuarios() {
+            ddUsuario.DataSource = negocioUsuario.ObtenerUsuario();
+            ddUsuario.DataTextField = "usuario";
+            ddUsuario.DataValueField = "id";
+            ddUsuario.DataBind();
         }
 
         protected void CargarHabitaciones() {
@@ -34,7 +43,7 @@ namespace presentacion
             int numero = Convert.ToInt32(txtNumero.Text);
             string descripcion = txtDescripcion.Text;
             int huespedes = Convert.ToInt32(txtHuespedes.Text);
-            int idUsuario = Convert.ToInt32(txtIdUsuario.Text);
+            int idUsuario = int.Parse(ddUsuario.SelectedValue);
 
             bool exito = negocioHabitaciones.AgregarHabitacion(numero, descripcion, huespedes, idUsuario);
 
@@ -83,5 +92,6 @@ namespace presentacion
                 CargarHabitaciones();
             }
         }
+
     }
 }
