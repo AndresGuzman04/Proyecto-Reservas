@@ -21,17 +21,10 @@ namespace presentacion
 
             if (!IsPostBack) {
                 CargarHabitaciones();
-                CargarUsuarios();
             }
 
         }
 
-        protected void CargarUsuarios() {
-            ddUsuario.DataSource = negocioUsuario.ObtenerUsuario();
-            ddUsuario.DataTextField = "usuario";
-            ddUsuario.DataValueField = "id";
-            ddUsuario.DataBind();
-        }
 
         protected void CargarHabitaciones() {
             gvHabitaciones.DataSource = negocioHabitaciones.ObtenerHabitaciones();
@@ -43,17 +36,17 @@ namespace presentacion
             int numero = Convert.ToInt32(txtNumero.Text);
             string descripcion = txtDescripcion.Text;
             int huespedes = Convert.ToInt32(txtHuespedes.Text);
-            int idUsuario = int.Parse(ddUsuario.SelectedValue);
+            int Usuario = Convert.ToInt32(Session["Usuario"]);
 
-            bool exito = negocioHabitaciones.AgregarHabitacion(numero, descripcion, huespedes, idUsuario);
+            bool exito = negocioHabitaciones.AgregarHabitacion(numero, descripcion, huespedes, Usuario);
 
             if (exito)
             {
-                Response.Write("<script>alert('Habitacion agregada con exito');</script>");
+                Response.Write("<script>alert('Cliente agregada con exito');</script>");
                 CargarHabitaciones();
             }
             else {
-                Response.Write("<script>alert('Error al agrgar la habitacion');</script>");
+                Response.Write("<script>alert('Error al agrgar la Cliente');</script>");
             }
         }
 
@@ -92,6 +85,7 @@ namespace presentacion
                 CargarHabitaciones();
             }
         }
+
 
     }
 }

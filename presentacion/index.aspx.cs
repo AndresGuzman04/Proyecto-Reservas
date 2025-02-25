@@ -23,16 +23,16 @@ namespace presentacion
             string usuario = user.Text.Trim();
             string contra = password.Text.Trim();
 
-            string resultado = negocioUsuario.iniciarSesion(usuario, contra);
+            int resultado = negocioUsuario.iniciarSesion(usuario, contra);
 
-            if (resultado == "OK")
+            if (resultado == -1)
             {
-                Session["Usuario"] = usuario;
-                Response.Redirect("Habitaciones.aspx");
+                label1.Text = "Usuario o Contraseña incorrectos";
             }
             else
             {
-                label1.Text = resultado;
+                Session["Usuario"] = resultado;
+                Response.Redirect("Habitaciones.aspx");
             }
 
 

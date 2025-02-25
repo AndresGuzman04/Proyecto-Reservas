@@ -12,14 +12,15 @@ namespace negocio
     {
         Usuarios dataUsuario = new Usuarios();
 
-        public string iniciarSesion(string usuario, string contra) {
-            if (dataUsuario.validarUsuario (usuario, contra))
+        public int iniciarSesion(string usuario, string contra) {
+            if (dataUsuario.validarUsuario(usuario, contra))
             {
-                return "OK";
+                int id = dataUsuario.ObtenerId(usuario, contra);
+                return id;
             }
             else
             {
-                return "Usuario o contraseña incorrectos " + usuario + " " + contra;
+                return -1;
             }
         }
 

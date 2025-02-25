@@ -6,15 +6,22 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Habitaciones</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">Dashboard Reservas</span>
+        <a class="navbar-brand" href="#">Dashboard Reservas</a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="Habitaciones.aspx">Reservas</a>
+            <a class="nav-link" href="Clientes.aspx">Clientes</a>
+          </div>
+        </div>
       </div>
     </nav>
+
     <div class="container ">    
         <form id="form1" class="needs-validation" runat="server">
             <div class="row">
@@ -26,10 +33,6 @@
                     <asp:TextBox class="form-control" ID="txtDescripcion" runat="server"></asp:TextBox><br />
                     <label class="form-label">Huéspedes:</label>
                     <asp:TextBox class="form-control" ID="txtHuespedes" runat="server"></asp:TextBox><br />
-                    <label class="form-label">Descripción:</label>
-                    <asp:TextBox class="form-control" ID="txtIdUsuario" runat="server"></asp:TextBox><br />
-                    <label class="form-label">Usuarios:</label>
-                    <asp:DropDownList class="form-control" ID="ddUsuario" runat="server" ></asp:DropDownList><br />
                     <asp:Button class="btn btn-primary" ID="btnAgregar" runat="server" Text="Agregar Habitación" OnClick="btnAgregar_Click" />
                 </div>
 
@@ -41,7 +44,7 @@
                         OnRowUpdating="gvHabitaciones_RowUpdating"
                         OnRowCancelingEdit="gvHabitaciones_RowCancelingEdit"
                         OnRowDeleting="gvHabitaciones_RowDeleting"
-                        GridLines="None">
+                        GridLines="None" >
                     <Columns  >
                             <asp:BoundField DataField="id_habitaciones" HeaderText="ID" ReadOnly="True" />
                             <asp:BoundField DataField="numero" HeaderText="Número" />
