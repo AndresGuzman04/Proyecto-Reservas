@@ -14,8 +14,10 @@
         <a class="navbar-brand" href="#">Dashboard Reservas</a>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link" aria-current="page" href="Habitaciones.aspx">Reservas</a>
+            <a class="nav-link"  href="Habitaciones.aspx">Habitaciones</a>
             <a class="nav-link active" href="Clientes.aspx">Clientes</a>
+              <a class="nav-link"  href="Reservas.aspx">Reservas</a>
+              <a class="nav-link" href="CheckReserva.aspx">Check Reservas</a>
           </div>
         </div>
       </div>

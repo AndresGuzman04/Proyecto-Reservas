@@ -48,7 +48,7 @@ namespace datos
             }
         }
 
-        public bool ModificarHabitacion(int id, int numero, string descripcion, int huespedes, int idUsuario)
+        public bool ModificarHabitacion(int id, int numero, string descripcion, int huespedes)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -56,15 +56,13 @@ namespace datos
                 using (SqlCommand cmd = new SqlCommand("UPDATE habitaciones SET " +
                     "numero = @numero, " + 
                     "descripcion = @descripcion, " +
-                    "huespedes = @huespedes, " +
-                    "id_usuario = @id_Usuario " +
+                    "huespedes = @huespedes " +
                     "WHERE id_habitaciones = @id_habitacion", con))
                 {
                     cmd.Parameters.AddWithValue("@id_habitacion", id);
                     cmd.Parameters.AddWithValue("@numero", numero);
                     cmd.Parameters.AddWithValue("@descripcion", descripcion);
                     cmd.Parameters.AddWithValue("@huespedes", huespedes);
-                    cmd.Parameters.AddWithValue("@id_Usuario", idUsuario);
 
                     int filasAfectadas = cmd.ExecuteNonQuery();
                     return filasAfectadas > 0;
@@ -84,5 +82,26 @@ namespace datos
                 }
             }
         }
+
+
+        public DataTable ObtenerHabitacionPorHuespedes(int huespedesCantidad)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("SELECT id_habitaciones, numero FROM habitaciones WHERE huespedes = @cantidad", con))
+                {
+                    cmd.Parameters.AddWithValue("@cantidad",huespedesCantidad);
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(dt);
+                    }
+                }
+            }
+            return dt;
+        }
+
     }
 }

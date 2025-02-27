@@ -63,9 +63,8 @@ namespace presentacion
             int numero = int.Parse((row.Cells[1].Controls[0] as System.Web.UI.WebControls.TextBox).Text);
             string descripcion = (row.Cells[2].Controls[0] as System.Web.UI.WebControls.TextBox).Text;
             int huespedes = int.Parse((row.Cells[3].Controls[0] as System.Web.UI.WebControls.TextBox).Text);
-            int idUsuario = int.Parse((row.Cells[4].Controls[0] as System.Web.UI.WebControls.TextBox).Text);
 
-            if (negocioHabitaciones.ModificarHabitacion(id, numero, descripcion, huespedes, idUsuario))
+            if (negocioHabitaciones.ModificarHabitacion(id, numero, descripcion, huespedes))
             {
                 gvHabitaciones.EditIndex = -1;
                 CargarHabitaciones();

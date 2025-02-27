@@ -20,12 +20,14 @@ namespace negocio
             return habitacionesN.AgregarHabitacion(numero, descripcion, huespedes, idUsuario);
         }
 
-        public bool ModificarHabitacion(int id, int numero, string descripcion, int huespedes, int idUsuario) {
-            return habitacionesN.ModificarHabitacion(id, numero, descripcion, huespedes, idUsuario);
+        public bool ModificarHabitacion(int id, int numero, string descripcion, int huespedes) {
+            return habitacionesN.ModificarHabitacion(id, numero, descripcion, huespedes);
         }
 
         public bool EliminarHabitacion(int id) { 
             return habitacionesN.EliminarHabitacion(id);
         }
+
+        
     }
 }

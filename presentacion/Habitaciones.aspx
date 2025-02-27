@@ -15,8 +15,10 @@
         <a class="navbar-brand" href="#">Dashboard Reservas</a>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="Habitaciones.aspx">Reservas</a>
+            <a class="nav-link active"  href="Habitaciones.aspx">Habitaciones</a>
             <a class="nav-link" href="Clientes.aspx">Clientes</a>
+              <a class="nav-link " href="Reservas.aspx">Reservas</a>
+              <a class="nav-link" href="CheckReserva.aspx">Check Reservas</a>
           </div>
         </div>
       </div>
@@ -50,7 +52,6 @@
                             <asp:BoundField DataField="numero" HeaderText="Número" />
                             <asp:BoundField DataField="descripcion" HeaderText="Descripción" />
                             <asp:BoundField DataField="huespedes" HeaderText="Huéspedes" />
-                            <asp:BoundField DataField="id_usuario" HeaderText="ID Usuario" />
 
                         <asp:CommandField ShowEditButton="True">
                             <ControlStyle CssClass="btn btn-primary"></ControlStyle>

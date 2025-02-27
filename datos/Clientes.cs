@@ -59,19 +59,20 @@ namespace datos
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand("UPDATE clientes SET " +
-                    "nombre =@nombre , "+
+                using (SqlCommand cmd = new SqlCommand("UPDATE cliente SET " +
+                    "nombre = @nombre, "+
                     "dui = @dui, "+
-                    "telefono, @telefono "+
+                    "telefono = @telefono, "+
                     "correo = @correo, "+
-                    "departamento = @departamento, "+
-                    "WHERW id_cliente = @id ", con))
+                    "departamento = @departamento "+
+                    "WHERE id_cliente = @id", con))
                 {
                     cmd.Parameters.AddWithValue("@nombre", nombre);
                     cmd.Parameters.AddWithValue("@dui", dui);
+                    cmd.Parameters.AddWithValue("@telefono", telefono);
                     cmd.Parameters.AddWithValue("@correo", correo);
                     cmd.Parameters.AddWithValue("@departamento", departamento);
-                    cmd.Parameters.AddWithValue("@id_cliente", id);
+                    cmd.Parameters.AddWithValue("@id", id);
 
                     int filasAfectadas = cmd.ExecuteNonQuery();
                     return filasAfectadas > 0;
@@ -93,5 +94,23 @@ namespace datos
                 }
             }
         }
+
+        public DataTable ObtenerCliente()
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("SELECT id_cliente, nombre, dui FROM cliente", con))
+                {
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(dt);
+                    }
+                }
+            }
+            return dt;
+        }
+
     }
 }

@@ -23,9 +23,5 @@ namespace negocio
                 return -1;
             }
         }
-
-        public DataTable ObtenerUsuario() {
-            return dataUsuario.ObtenerUsuarios();
-        }
     }
 }
